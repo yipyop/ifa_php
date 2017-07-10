@@ -1,0 +1,35 @@
+
+
+.aside-1{
+	background-color: gold;
+	flex: 1;
+
+}
+
+.aside-2{
+	flex:1;
+	background-color: hotpink; }
+.wrapper{
+	display : flex;
+	flex-direction: column;
+	height: 100vh;
+}
+.main-wrapper{
+	flex:3;
+	display: flex;
+}
+
+.main{ 
+	background-color: deepskyblue; 
+	flex:3;
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	padding: 20px;
+}
+.col
+{	
+	flex:1;
+	flex-basis:300px;
+}
+h2{text-align: center;}

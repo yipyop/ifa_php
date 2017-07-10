@@ -1,0 +1,441 @@
+
+
+	<h1>Etat civil</h1>
+
+	<form action="index.php" method="post">
+		
+
+		<!-- Vous -->
+
+
+		<h3>Vos informations</h3>
+		
+		<hr>
+
+		<div class="form-group">
+			<strong>Civilité :</strong> 
+			<label for="civilite">M.</label><input type="radio" name="etat_civil-civilite" value="monsieur"/>
+      		<label for="civilite">Mlle</label><input type="radio" name="etat_civil-civilite" value="mademoiselle"/>
+      		<label for="civilite">Mme</label><input type="radio" name="etat_civil-civilite" value="madame"/>
+		</p>	
+		<div class="form-group">
+			<label for="coordonnes">Nom :</label><input type="text" name="etat_civil-nom" placeholder="Veuillez saisir votre nom" required/>
+		</div>
+		
+		<div class="form-group">
+			<label for="coordonnes">Prénom :</label><input type="text" name="etat_civil-prenom" placeholder="Veuillez saisir votre prénom" required/>
+
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Age :</label><input type="text" name="etat_civil-age" placeholder="Veuillez saisir votre age" required/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Votre date de naissance :</label><input type="date" name="etat_civil-date_naissance" placeholder="Veuillez saisir votre date d'anniversaire" required/>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Nationalité :</label><input type="text" name="etat_civil-nationalite" placeholder="Veuillez saisir votre nationalité" required/>
+		</div>
+
+		<p><h4>Residence fiscale :</h4></p>
+
+		<div class="form-group">
+			<label for="coordonnes">Votre numéro et voie :</label><input type="text" name="etat_civil-adresse" placeholder="Veuillez saisir votre numéro et voie" required/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Code Postale :</label><input type="text" name="etat_civil-code_postal" placeholder="Votre code postal" required/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Ville :</label><input type="text" name="etat_civil-ville" placeholder="Veuillez saisir votre ville" required/>
+		</div>
+		
+		<div class="form-group">
+			<label for="coordonnes">E-mail :</label><input type="text" name="etat_civil-email" placeholder="Veuillez saisir votre adresse email" required/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Téléphone :</label><input type="text" name="etat_civil-telephone" placeholder="Veuillez saisir votre nomuéro de téléphone fixe" required/>
+		</div>
+		
+		<div class="form-group">
+			<label for="coordonnes">Téléphone gsm :</label><input type="text" name="etat_civil-gsm" placeholder="Veuillez saisir votre numéro de téléphone gsm" /><br required/>
+		</div>
+
+		<div class="form-group">
+			<label>Profession :</label><input type="text" name="etat_civil-profession" placeholder="Veuillez saisir votre profession" required/>	
+		</div>
+
+		<div class="form-group">
+			<label>Revenus :</label><input type="text" name="etat_civil-revenus" placeholder="Veuillez saisir vos revenus" required/>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Situation de famille :</label>
+			<select name="etat_civil-situationfamille" required>
+     			<option value="marié">Marié(e)</option>
+     			<option value="celibataire">Celibataire</option>
+     			<option value="séparé">Séparé(e)</option>
+     			<option value="divorcé">Divorcé(e)</option>
+		    </select>
+		        	
+		</div>
+
+
+		<!-- Conjoint -->
+
+
+		<h3>Votre conjoint</h3>
+		
+		<hr>
+		
+		<div class="form-group">
+			<strong>Civilité :</strong> 
+			<label for="civilite">M.</label><input type="radio" name="etat_civil-conjoint-civilite" value="monsieur"/>
+      		<label for="civilite">Mlle</label><input type="radio" name="etat_civil-conjoint-civilite" value="mademoiselle"/>
+      		<label for="civilite">Mme</label><input type="radio" name="etat_civil-conjoint-civilite" value="madame"/>
+		</p>	
+		<div class="form-group">
+			<label for="coordonnes">Nom :</label><input type="text" name="etat_civil-conjoint-nom" placeholder="Veuillez saisir le nom de votre conjoint" />
+		</div>
+		
+		<div class="form-group">
+			<label for="coordonnes">Prénom :</label><input type="text" name="etat_civil-conjoint-prenom" placeholder="Veuillez saisir le prénom de votre conjoint"/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Age :</label><input type="text" name="etat_civil-conjoint-age" placeholder="Veuillez saisir l'age de votre conjoint"/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Votre date de naissance :</label><input type="date" name="etat_civil-conjoint-date_naissance" placeholder="Veuillez saisir la date d'anniversaire de votre conjoint"/>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Nationalité :</label><input type="text" name="etat_civil-conjoint-nationalite" placeholder="Veuillez saisir la nationalité de votre conjoint" />
+		</div>
+
+		<p><h4>Residence fiscale :</h4></p>
+
+		<div class="form-group">
+			<label for="coordonnes">Numéro et voie:</label><input type="text" name="etat_civil-conjoint-adresse" placeholder="Veuillez saisir le numéro et la voie de votre conjoint" />
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Code Postale :</label><input type="text" name="etat_civil-conjoint-code_postal" placeholder="Veuillez saisir le code postal de votre conjoint" />
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Ville :</label><input type="text" name="etat_civil-conjoint-ville" placeholder="Veuillez saisir la ville de votre conjoint" />
+		</div>
+		
+		<div class="form-group">
+			<label for="coordonnes">E-mail :</label><input type="text" name="etat_civil-conjoint-email" placeholder="Veuillez saisir l'adresse email de votre conjoint" />
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Téléphone :</label><input type="text" name="etat_civil-conjoint-telephone" placeholder="Veuillez saisir le téléphone fixe de votre conjoint" />
+		</div>
+		
+		<div class="form-group">
+			<label for="coordonnes">Téléphone gsm :</label><input type="text" name="etat_civil-conjoint-gsm" placeholder="Veuillez saisir le téléphone gsm de votre conjoint" />
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Profession :</label><input type="text" name="etat_civil-conjoint-profession" placeholder="Veuillez saisir la profession de votre conjoint" />	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Revenus :</label><input type="text" name="etat_civil-conjoint-revenus" placeholder="Veuillez saisir les revenus de votre conjoint" />	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Situation de famille :</label><select name="etat_civil-conjoint-situationfamille">
+     			<option value="marié">Marié(e)</option>
+     			<option value="celibataire">Celibataire</option>
+     			<option value="séparé">Séparé(e)</option>
+     			<option value="divorcé">Divorcé(e)</option>
+		    </select>
+		        	
+		</div>
+		
+
+		<!-- Enfants -->
+
+
+		<h3>Vos enfants</h3>
+		
+		<hr>
+		
+		<h4>Enfant 1 :</h4>
+
+		<div class="form-group">
+			<label for="coordonnes">Nom : </label><input type="text" name="etat_civil-enfant-1-nom" placeholder="Veuillez saisir le nom de l'enfant 1" />
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Prénom :</label><input type="text" name="etat_civil-enfant-1-prenom" placeholder="Veuillez saisir le prénom de l'enfant 1" />	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">date de naissance : </label><input type="date" name="etat_civil-enfant-1-date_naissance">
+		</div>
+
+		
+		<h4>Enfant 2 :</h4>
+
+		<div class="form-group">
+			<label for="coordonnes">Nom : </label><input type="text" name="etat_civil-enfant-2-nom" placeholder="Veuillez saisir le nom de l'enfant 2" />
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Prénom :</label><input type="text" name="etat_civil-enfant-2-prenom" placeholder="Veuillez saisir le prénom de l'enfant 2" />	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">date de naissance : </label><input type="date" name="etat_civil-enfant-2-date_naissance">
+		</div>
+
+		
+		<h4>Enfant 3 :</h4>
+
+		<div class="form-group">
+			<label for="coordonnes">Nom : </label><input type="text" name="etat_civil-enfant-3-nom" placeholder="Veuillez saisir le nom de l'enfant 3" />
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Prénom :</label><input type="text" name="etat_civil-enfant-3-prenom" placeholder="Veuillez saisir le prénom de l'enfant 3" />	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">date de naissance : </label><input type="date" name="etat_civil-enfant-3-date_naissance">
+		</div>
+
+
+		<!-- Fiscalité -->
+
+
+		<h1>Fiscalité</h1>
+
+		<hr>
+		
+		<h3>Montant des impôts payés</h3>
+
+		<div class="form-group">
+			<label for="coordonnes">Montant de vos impôts en euros :</label><input type="text" name="fiscalite-montant_impots" placeholder="Veuillez saisir le montant de vos impôts" />	
+		</div>
+
+		<h3>Faites-vous votre déclaration d'impôts ?</h3><br>
+                  <input type="radio" name="vousdeclaration" value="ouijedeclare" id="ouijedeclare" /> <label for="ouijedeclare">Si oui</label><br />
+                      <h4>Déduisez-vous :</h4>
+                          <input type="checkbox" name="EL" id="EL" /> <label for="EL">EL</label><br />
+                          <input type="checkbox" name="A110" id="A110" /> <label for="fA110">A110</label><br>
+                          <input type="checkbox" name="A111" id="A111" /> <label for="fA111">A111</label><br>
+                          <input type="checkbox" name="111B" id="111B" /> <label for="111B">111B</label><br>                          
+                          <input type="checkbox" name="SRD" id="SRD" /> <label for="SRD">SRD</label><br><br>
+                  <input type="radio" name="vousdeclaration" value="nonjedeclare" id="nonjedeclare" /> <label for="nonjedeclare">Si non</label><br />
+                      <h4>Etes-vous intéressé pour le faire ?</h4>
+                          <input type="radio" name="vousinteressepourdeclarer" value="ouiinteresse" id="ouiinteresse" /> <label for="ouiinteresse">Oui</label><br>
+                          <input type="radio" name="vousinteressepourdeclarer" value="noninteresse" id="noninteresse" /> <label for="noninteresse">non</label><br>
+
+
+        <h2>Votre conjoint</h2><br>
+            <h3>Montant des impôts payés</h3><br>
+                  <input type="text" name="conjointmontantimpots" /><p>€</p>
+            <h3>Faites-vous votre déclaration d'impôts ?</h3><br>
+                  <input type="radio" name="conjointdeclaration" value="ouijedeclare" id="ouijedeclare" /> <label for="ouijedeclare">Si oui</label><br />
+                      <h4>Déduisez-vous :</h4>
+                          <input type="checkbox" name="EL" id="EL" /> <label for="EL">EL</label><br />
+                          <input type="checkbox" name="A110" id="A110" /> <label for="fA110">A110</label><br>
+                          <input type="checkbox" name="A111" id="A111" /> <label for="fA111">A111</label><br>
+                          <input type="checkbox" name="111B" id="111B" /> <label for="111B">111B</label><br>                          
+                          <input type="checkbox" name="SRD" id="SRD" /> <label for="SRD">SRD</label><br><br>
+                  <input type="radio" name="conjointdeclaration" value="nonjedeclare" id="nonjedeclare" /> <label for="nonjedeclare">Si non</label><br />
+                      <h4>Etes-vous intéressé pour le faire ?</h4>
+                          <input type="radio" name="conjointinteressepourdeclarer" value="ouiinteresse" id="ouiinteresse" /> <label for="ouiinteresse">Oui</label><br>
+                          <input type="radio" name="conjointinteressepourdeclarer" value="noninteresse" id="noninteresse" /> <label for="noninteresse">non</label><br>
+
+
+		<h3>Vos informations</h3>
+		
+		<hr>
+
+
+		<h3>Votre conjoint</h3>
+		
+		<hr>
+
+
+		<!-- Crédits -->
+
+
+		<h1>Crédits</h1>
+		
+		<hr>
+		
+		<h4>Crédit 1</h4>
+
+		<div class="form-group">
+			<label for="coordonnes">Nature de l'emprunt :</label>
+			<select name="credit-1-type_credit">
+				<option value="pret-personnel">Prêt personnel</option>
+				<option value="pret-immobilier">Prêt immobilier</option>
+				<option value="pret-travaux">Prêt travaux</option>
+			</select>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Montant des mensualités</label><input type="text" name="credit-1-montant_mensualite"/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Taux de crédit :</label><input type="number" name="credit-1-taux" value="0" max="25" min="0" step="0.1"/>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Date de fin des mensualités</label><input type="date" name="credit-1-date_fin_mensualite"/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Capital restant dû</label><input type="text" name="credit-1-capital_restant"/>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Capital emprunté</label><input type="text" name="credit-1-capital_emprunte"/>
+		</div>
+
+		<h4>Crédit 2</h4>
+
+		<div class="form-group">
+			<label for="coordonnes">Nature de l'emprunt :</label>
+			<select name="credit-2-type_credit">
+				<option value="pret-personnel">Prêt personnel</option>
+				<option value="pret-immobilier">Prêt immobilier</option>
+				<option value="pret-travaux">Prêt travaux</option>
+			</select>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Montant des mensualités</label><input type="text" name="credit-2-montant_mensualite"/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Taux de crédit :</label><input type="number" name="credit-2-taux" value="0" max="25" min="0" step="0.1"/>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Date de fin des mensualités</label><input type="date" name="credit-2-date_fin_mensualite"/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Capital restant dû</label><input type="text" name="credit-2-capital_restant"/>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Capital emprunté</label><input type="text" name="credit-2-capital_emprunte"/>
+		</div>
+
+		<h4>Crédit 3</h4>
+
+		<div class="form-group">
+			<label for="coordonnes">Nature de l'emprunt :</label>
+			<select name="credit-3-type_credit">
+				<option value="pret-personnel">Prêt personnel</option>
+				<option value="pret-immobilier">Prêt immobilier</option>
+				<option value="pret-travaux">Prêt travaux</option>
+			</select>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Montant des mensualités</label><input type="text" name="credit-3-montant_mensualite"/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Taux de crédit :</label><input type="number" name="credit-3-taux" value="0" max="25" min="0" step="0.1"/>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Date de fin des mensualités</label><input type="date" name="credit-3-date_fin_mensualite"/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Capital restant dû</label><input type="text" name="credit-3-capital_restant"/>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Capital emprunté</label><input type="text" name="credit-3-capital_emprunte"/>
+		</div>
+
+		<h4>Crédit 4</h4>
+
+		<div class="form-group">
+			<label for="coordonnes">Nature de l'emprunt :</label>
+			<select name="credit-4-type_credit">
+				<option value="pret-personnel">Prêt personnel</option>
+				<option value="pret-immobilier">Prêt immobilier</option>
+				<option value="pret-travaux">Prêt travaux</option>
+			</select>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Montant des mensualités</label><input type="text" name="credit-4-montant_mensualite"/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Taux de crédit :</label><input type="number" name="credit-4-taux" value="0" max="25" min="0" step="0.1"/>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Date de fin des mensualités</label><input type="date" name="credit-4-date_fin_mensualite"/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Capital restant dû</label><input type="text" name="credit-4-capital_restant"/>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Capital emprunté</label><input type="text" name="credit-4-capital_emprunte"/>
+		</div>
+
+		<h4>Crédit 5</h4>
+
+		<div class="form-group">
+			<label for="coordonnes">Nature de l'emprunt :</label>
+			<select name="credit-5-type_credit">
+				<option value="pret-personnel">Prêt personnel</option>
+				<option value="pret-immobilier">Prêt immobilier</option>
+				<option value="pret-travaux">Prêt travaux</option>
+			</select>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Montant des mensualités</label><input type="text" name="credit-5-montant_mensualite"/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Taux de crédit :</label><input type="number" name="credit-5-taux" value="0" max="25" min="0" step="0.1"/>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Date de fin des mensualités</label><input type="date" name="credit-5-date_fin_mensualite"/>
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Capital restant dû</label><input type="text" name="credit-5-capital_restant"/>	
+		</div>
+
+		<div class="form-group">
+			<label for="coordonnes">Capital emprunté</label><input type="text" name="credit-5-capital_emprunte"/>
+		</div>
+
+
+
+		<button class="btn btn-control btn-primary pull-right" type="submit" name="validation_button" value="Envoyer le formulaire">Valider votre formulaire</button><br>
+
+	</form>	
+
+
+		

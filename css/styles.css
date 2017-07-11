@@ -14,15 +14,18 @@ input[type=text], input[type=date], input[type=number], select {
     padding-left: 5px;
 }
 
+.fiscalite-input[type=text] {
+    float:left;
+    /*width: 85%;*/
+}
+
 label[for=civilite] {
-    font-weight: normal;
-    margin-right: 10px;
+    width: 15%;
     
 }
 
-input[type=radio] {
-    padding-right: 5px;
-    margin-right: 10px;
+form {
+    padding-bottom: 80px;
 }
 
 h3, h4 {
@@ -32,6 +35,38 @@ h3, h4 {
 select {
     height: 26px;
     width: 85%;
+}
+
+.fiscalite {
+    /*display: inline-block;*/
+    width: 100%; 
+    margin: auto;
+}
+
+.fiscalite-vous {
+    width: 49%; 
+    float: left;
+    padding: 10px;
+}
+
+.fiscalite-conjoint {
+    width: 49%;
+    float: right;
+    padding: 10px;
+}
+
+.fiscalite-declaration-left {
+    width: 49%; 
+    float: left;
+    padding: 10px;
+    border-right: 1px black solid;
+}
+
+.fiscalite-declaration-right {
+    width: 49%;
+    float: right;
+    padding: 10px;
+    
 }
 
 

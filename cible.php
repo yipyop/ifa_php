@@ -76,6 +76,48 @@
                 $formulaire[$post[0]][$post[1]][$post[2]] = POST_data_types($key);  
             }
         }
+        elseif( $post[0] == 'fiscalite' ) {
+
+            if( $post[1] == 'conjoint' ) {
+
+                if( POST_exist($key) ) {
+                    if( $post[2] == 'email' ){
+                        $formulaire[$post[0]][$post[1]][$post[2]] = POST_email_type($key);
+                    }
+                    elseif ( $post[2] == 'date_naissance' && POST_date($key) ) {
+                        $formulaire[$post[0]][$post[1]][$post[2]] = $_POST[$key];
+                    }
+                    else {
+                        $formulaire[$post[0]][$post[1]][$post[2]] = POST_data_types($key);
+                    }
+                }
+                else {
+                    $erreurs[$post[0]][$post[1]][$post[2]] = false;
+                }
+
+
+                
+            }
+            else {
+
+                if( POST_exist($key) ) {
+                    if( $post[1] == 'email' ){
+                        $formulaire[$post[0]]['vous'][$post[1]] = POST_email_type($key);
+                    }
+                    elseif ( $post[1] == 'date_naissance' ) {
+                        $formulaire[$post[0]]['vous'][$post[1]] = POST_date($key);
+                    }
+                    else {
+                        $formulaire[$post[0]]['vous'][$post[1]] = POST_data_types($key);
+                    }
+                }
+                else {
+                    $erreurs[$post[0]]['vous'][$post[1]] = false;
+                }
+
+                    
+            }
+        }
         
 
     }
@@ -90,13 +132,11 @@
         $array_client_luxembourg = false;
         $array_client_france = false;
 
-        $array_lux= array( 'lëtzebuerg', 'letzebuerg', 'luxembourg',  'luxembourgeois', 'luxembourgeoise', 'lux', 'lulu', 'luxos', 'habitant du grand ducal', 'habitant du grand duché', 'habitant du grand duché du Luxembourg'  );
-        $array_fr= array( 'französisch', 'franzosisch', 'franzos', 'franséisch', 'franseisch', 'france',  'francais', 'francaise', 'français', 'française', 'habitant de la france', 'habitant de france' );
-
-        if( in_array( $array_lux, strtolower( $formulaire['etat_civil']['vous']['nationalite'] ) ) ) {
+        
+        if( $formulaire['etat_civil']['vous']['nationalite'] == 'france' )  {
             $array_client_luxembourg = $formulaire;
         }
-        elseif( in_array( $array_fr, strtolower( $formulaire['etat_civil']['vous']['nationalite'] ) ) ) {
+        elseif( $formulaire['etat_civil']['vous']['nationalite'] == 'luxembourg' ) {
             $array_client_france = $formulaire;
         }
 

@@ -80,7 +80,7 @@
 
             if( $post[1] == 'conjoint' ) {
 
-                if( POST_exist($key) ) {
+                
                     if( $post[2] == 'email' ){
                         $formulaire[$post[0]][$post[1]][$post[2]] = POST_email_type($key);
                     }
@@ -90,10 +90,7 @@
                     else {
                         $formulaire[$post[0]][$post[1]][$post[2]] = POST_data_types($key);
                     }
-                }
-                else {
-                    $erreurs[$post[0]][$post[1]][$post[2]] = false;
-                }
+               
 
 
                 
@@ -146,5 +143,6 @@
         
 
         var_dump( $formulaire, $erreurs );
+        var_dump( $array_client_france, $array_client_luxembourg );
     }
 ?>

@@ -6,9 +6,12 @@
 
     function POST_data_types( $post_key ) {
         if( is_numeric( $_POST[$post_key] ) ) {
-            if( is_float( $_POST[$post_key] ) ) return (float) $_POST[$post_key];
-            if( is_int( $_POST[$post_key] ) ) return (int) $_POST[$post_key];
             
+            if (strpos($_POST[$post_key],'.') !== false) {
+                return (float) $_POST[$post_key];
+            }else {
+                return (int) $_POST[$post_key];
+            }    
         } 
         elseif( is_string( $_POST[$post_key] ) ) {
             return (string) $_POST[$post_key];

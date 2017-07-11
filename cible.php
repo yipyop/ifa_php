@@ -1,9 +1,13 @@
 <?php
     
-
+    require 'fonctions.php';
     var_dump( $_POST);
 
-    require 'fonctions.php';
+    if( isset($_POST['test']) && $_POST['test'] ) {
+        var_dump( POST_data_types('test') ) ; exit;  
+    }
+
+    
 
     if( !empty($_POST) ) {
         $formulaire = array();
@@ -177,7 +181,7 @@
                     else {
                         
                         $checkbox = array( 'EL', 'fA110', 'fA111', '111B', 'SRD' );
-                        if ( $post[2] == 'declaration' && $value == 'oui' ) {
+                        if ( $post[1] == 'declaration' && $value == 'oui' ) {
                             if( !in_array( $value, $checkbox ) ) {
                                 $erreurs[$post[0]]['vous'][$post[1]] = 'valeur invalide';  
                             }
@@ -185,7 +189,7 @@
                                 $formulaire[$post[0]]['vous'][$post[1]] = $valeur;   
                             }
                         }
-                        elseif ( $post[2] == 'declaration' && $value == 'non' ) {
+                        elseif ( $post[1] == 'declaration' && $value == 'non' ) {
                             if( !in_array( $value, array( 'oui', 'non') ) ) {
                                 $erreurs[$post[0]]['vous'][$post[1]] = 'valeur invalide';  
                             }

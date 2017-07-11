@@ -44,7 +44,8 @@
     //fonction testant la partie état civil de la personne remplissant le formulaire.
 
     function test_etat_civil_vous($key, $value, $explode_post) {
-            if( !POST_exist($key) ) return $valeur['erreur'] = 'valeur manquante';
+            $erreur = array();
+            if( !POST_exist($key) ) return 'erreur : valeur manquante';
 
             if( $explode_post[1] == 'email' ){
                 return POST_email_type($key);
@@ -59,14 +60,13 @@
                 $int = array('age', 'code_postal', 'telephone', 'gsm', 'revenus');
                 
                 if ( in_array( $explode_post[1], $int) ) {
-                    return !is_int( POST_data_types($key) ) ?  'ce champs doit être un nombre' :  POST_data_types($key);
+                    return !is_int( POST_data_types($key) ) ?  'erreur : ce champs doit être un nombre' :  POST_data_types($key);
                 }
                 else {
-                    return !is_string( POST_data_types($key) ) ?  $valeur['erreur'] = 'Ce champs doit être une chaîne de caractère' :  POST_data_types($key);    
+                    return !is_string( POST_data_types($key) ) ?  'erreur : Ce champs doit être une chaîne de caractère' :  POST_data_types($key);    
                 }
             }
 
-            var_dump( $formulaire, $erreur);
         
             
         
@@ -78,17 +78,17 @@
         
         if( $explode_post[2] == 'email' ){
             if( !POST_email_type($key) ) {
-                $valeur['erreur'] = 'email invalide';                
+                return 'erreur : email invalide';                
             } 
             else {
-                POST_email_type($key);  
+                return POST_email_type($key);  
             }
         }
         if ( $explode_post[2] == 'date_naissance' && POST_date($key) ) {
             return $_POST[$key];
         }
         elseif ( $explode_post[2] == 'date_naissance' && !POST_date($key) ) {
-            $valeur['erreur'] = 'date_naissance invalide';
+            return 'erreur : date_naissance invalide';
         }
         else{
             if( POST_exist($key) )  {
@@ -97,10 +97,10 @@
                 $int = array('age', 'code_postal', 'telephone', 'gsm', 'revenus');
                 
                 if ( in_array( $explode_post[2], $int) ) {
-                    return !is_int( $valeur) ? $valeur['erreur'] = 'Ce champs doit être un nombre' :  $valeur;
+                    return !is_int( $valeur) ? $erreur['erreur'] = 'erreur : Ce champs doit être un nombre' :  $valeur;
                 }
                 else {
-                    !is_string( $valeur ) ? $valeur['erreur'] = 'Ce champs doit être une chaine de caractère' :  $valeur;  
+                    return !is_string( $valeur ) ? 'erreur : Ce champs doit être une chaine de caractère' :  $valeur;  
                 }
             }
         
@@ -118,7 +118,7 @@
                 return POST_date($key);
             }
             else {            
-                return !is_string( POST_data_types($key) ) ? $valeur['erreur'] = 'Ce champs doit être une chaine de caractère' :  POST_data_types($key);  
+                return !is_string( POST_data_types($key) ) ? 'erreur : Ce champs doit être une chaine de caractère' :  POST_data_types($key);  
             }
         }
         
@@ -129,40 +129,41 @@
 
     function test_credit($key, $value, $explode_post) {
         
-        
-        if ( $explode_post[2] == 'date_fin_mensualite' && POST_date($key) ) {
-            $formulaire[$explode_post[0]][$explode_post[1]][$explode_post[2]] = $_POST[$key];
-        }
-        else {
-            $int = array( 'montant_mensualite', 'taux', 'capital_restant', 'capital_emprunte' );
-            
-            if( in_array($explode_post[2], $int ) ){
-                if( is_int( POST_data_types($key) ) || is_float( POST_data_types($key) ) ) {
-                    $formulaire[$explode_post[0]][$explode_post[1]][$explode_post[2]] = POST_data_types($key);   
-                }
-                else {
-                    $erreurs[$explode_post[0]][$explode_post[1]][$explode_post[2]] = 'Ce champs doit être un chiffre';    
-                }
+        if( POST_exist($key) ) {
+            if ( $explode_post[2] == 'date_fin_mensualite' && POST_date($key) ) {
+                return $_POST[$key];
             }
-            elseif( $explode_post[2] == 'type_credit') {
-                $select = array( 'pret-personnel', 'pret-immobilier', 'pret-travaux' );
-                if( !in_array( $explode_post[2], $select ) ) {
-                    $erreurs[$explode_post[0]][$explode_post[1]][$explode_post[2]] = 'valeur invalide';  
+            else {
+                $int = array( 'montant_mensualite', 'taux', 'capital_restant', 'capital_emprunte' );
+                
+                if( in_array($explode_post[2], $int ) ){
+                    if( is_int( POST_data_types($key) ) || is_float( POST_data_types($key) ) ) {
+                        return POST_data_types($key);   
+                    }
+                    else {
+                        return 'erreur : Ce champs doit être un chiffre';    
+                    }
                 }
-                elseif ( !is_string( POST_data_types($key)) ) {
-                    $erreurs[$explode_post[0]][$explode_post[1]][$explode_post[2]] = 'valeur invalide';
+                elseif( $explode_post[2] == 'type_credit') {
+                    $select = array( 'pret-personnel', 'pret-immobilier', 'pret-travaux' );
+                    if( !in_array( $value, $select ) ) {
+                        return 'erreur : valeur invalide';  
+                    }
+                    elseif ( !is_string( POST_data_types($key)) ) {
+                        return 'erreur : valeur invalide';
+                    }
+                    else {
+                        return POST_data_types($key);    
+                    }        
                 }
-                else {
-                    $formulaire[$explode_post[0]][$explode_post[1]][$explode_post[2]] = POST_data_types($key);    
-                }        
-            }
-            else{
-                if( is_string( POST_data_types($key) ) ) {
-                    $formulaire[$explode_post[0]][$explode_post[1]][$explode_post[2]] = POST_data_types($key);   
+                else{
+                    if( is_string( POST_data_types($key) ) ) {
+                        return POST_data_types($key);   
+                    }
+                    else {
+                        'erreur : Ce champs doit être un chaîne de caractère';    
+                    }    
                 }
-                else {
-                    $erreurs[$explode_post[0]][$explode_post[1]][$explode_post[2]] = 'Ce champs doit être un chaîne de caractère';    
-                }    
             }
         }
             
@@ -180,7 +181,7 @@
                     return $valeur;
                 } 
                 else {
-                    return $valeur['erreur'] = 'doit être un chiffre';  
+                    return 'erreur : doit être un chiffre';  
                 }          
             }
             else {
@@ -188,7 +189,7 @@
                 $checkbox = array( 'EL', 'fA110', 'fA111', '111B', 'SRD' );
                 if ( $explode_post[1] == 'declaration' && $value == 'oui' ) {
                     if( !in_array( $value, $checkbox ) ) {
-                        return $valeur['erreur'] = 'valeur invalide';  
+                        return 'erreur : valeur invalide';  
                     }
                     else {
                         return $valeur;   
@@ -196,7 +197,7 @@
                 }
                 elseif ( $explode_post[1] == 'declaration' && $value == 'non' ) {
                     if( !in_array( $value, array( 'oui', 'non') ) ) {
-                       return $valeur['erreur'] = 'valeur invalide';  
+                       return 'erreur : valeur invalide';  
                     }
                     else {
                         return $valeur;   
@@ -219,7 +220,7 @@
                     return $valeur;
                 }
                 else {
-                    return $valeur['erreur'] = 'Ce champs doit être un chiffre';  
+                    return 'erreur : Ce champs doit être un chiffre';  
                 }  
             }        
         }
@@ -228,7 +229,7 @@
             $checkbox = array( 'EL', 'fA110', 'fA111', '111B', 'SRD' );
             if ( $explode_post[2] == 'declaration' && $value == 'oui' ) {
                 if( !in_array( POST_data_types($key), $checkbox ) ) {
-                    return $valeur['erreur'] = 'valeur invalide';  
+                    return 'erreur : valeur invalide';  
                 }
                 else {
                     return POST_data_types($key);   
@@ -237,7 +238,7 @@
             //si la case 
             elseif ( $explode_post[2] == 'declaration' && $value == 'non' ) {
                 if( !in_array( POST_data_types($key), array( 'oui', 'non') ) ) {
-                    return $valeur['erreur'] = 'valeur invalide';  
+                    return 'erreur : valeur invalide';  
                 }
                 else {
                     return POST_data_types($key);   

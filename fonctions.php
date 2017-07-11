@@ -40,6 +40,7 @@
 
     }
 
+    
     //fonction testant la partie état civil de la personne remplissant le formulaire.
 
     function test_etat_civil_vous($key, $value, $explode_post) {
@@ -76,24 +77,34 @@
     function test_etat_civil_conjoint($key, $value, $explode_post) {
         
         if( $explode_post[2] == 'email' ){
-            return POST_email_type($key);
+            if( !POST_email_type($key) ) {
+                $valeur['erreur'] = 'email invalide';                
+            } 
+            else {
+                POST_email_type($key);  
+            }
         }
-        elseif ( $explode_post[2] == 'date_naissance' && POST_date($key) ) {
+        if ( $explode_post[2] == 'date_naissance' && POST_date($key) ) {
             return $_POST[$key];
         }
-        else {
-            $valeur = POST_data_types($key);
-
-            $int = array('age', 'code_postal', 'telephone', 'gsm', 'revenus');
-            
-            if ( in_array( $explode_post[2], $int) ) {
-                return !is_int( $valeur) ? $valeur['erreur'] = 'Ce champs doit être un nombre' :  $valeur;
-            }
-            else {
-                !is_string( $valeur ) ? $valeur['erreur'] = 'Ce champs doit être une chaine de caractère' :  $valeur;  
-            }
+        elseif ( $explode_post[2] == 'date_naissance' && !POST_date($key) ) {
+            $valeur['erreur'] = 'date_naissance invalide';
         }
+        else{
+            if( POST_exist($key) )  {
+                $valeur = POST_data_types($key);
+
+                $int = array('age', 'code_postal', 'telephone', 'gsm', 'revenus');
+                
+                if ( in_array( $explode_post[2], $int) ) {
+                    return !is_int( $valeur) ? $valeur['erreur'] = 'Ce champs doit être un nombre' :  $valeur;
+                }
+                else {
+                    !is_string( $valeur ) ? $valeur['erreur'] = 'Ce champs doit être une chaine de caractère' :  $valeur;  
+                }
+            }
         
+        }
         
 
     }
@@ -195,22 +206,22 @@
 
             
         }
-        else {
-            $erreurs[$explode_post[0]]['vous'][$explode_post[1]] = false;
-        }
+        
 
     }
     //fonction testant la partie fiscalité du conjoint du formulaire.
 
     function test_fiscalite_conjoint($key, $value, $explode_post) {
         if( $explode_post[2] == 'montant_impots') {
-            $valeur = POST_data_types($key);
-            if( is_int( POST_data_types($key) ) || is_float( POST_data_types($key) ) ) {
-                return POST_data_types($key);
-            } 
-            else {
-                return $valeur['erreur'] = 'Ce champs doit être un chiffre';  
-            }          
+            if( POST_exist( $key ) ) {
+                $valeur = POST_data_types($key);
+                if( is_int($valeur) || is_float($valeur) ) {
+                    return $valeur;
+                }
+                else {
+                    return $valeur['erreur'] = 'Ce champs doit être un chiffre';  
+                }  
+            }        
         }
         else {
             

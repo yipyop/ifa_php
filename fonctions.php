@@ -1,15 +1,18 @@
 <?php
 
+
     function POST_exist( $post_key ) {
         return isset( $_POST[$post_key] ) ? $_POST[$post_key] : false;
     }
 
     function POST_data_types( $post_key ) {
+        
         if( is_numeric( $_POST[$post_key] ) ) {
             
             if (strpos($_POST[$post_key],'.') !== false) {
                 return (float) $_POST[$post_key];
-            }else {
+            }
+            else {
                 return (int) $_POST[$post_key];
             }    
         } 
@@ -40,31 +43,32 @@
     //fonction testant la partie état civil de la personne remplissant le formulaire.
 
     function test_etat_civil_vous($key, $value, $explode_post) {
-        if( POST_exist($key) ) {
+            if( !POST_exist($key) ) return $valeur['erreur'] = 'valeur manquante';
+
             if( $explode_post[1] == 'email' ){
-                $formulaire[$explode_post[0]]['vous'][$explode_post[1]] = POST_email_type($key);
+                return POST_email_type($key);
             }
             elseif ( $explode_post[1] == 'date_naissance' ) {
-                $formulaire[$explode_post[0]]['vous'][$explode_post[1]] = POST_date($key);
+                return POST_date($key);
             }
             else {
-                $formulaire[$explode_post[0]]['vous'][$explode_post[1]] = POST_data_types($key);
-            
+               
                 $valeur = POST_data_types($key);
 
                 $int = array('age', 'code_postal', 'telephone', 'gsm', 'revenus');
                 
                 if ( in_array( $explode_post[1], $int) ) {
-                    !is_int( $valeur ) ? $erreurs[$explode_post[0]]['vous'][$explode_post[1]] = 'ce champs doit être un nombre' : $formulaire[$explode_post[0]]['vous'][$explode_post[1]] = $valeur;
+                    return !is_int( POST_data_types($key) ) ?  'ce champs doit être un nombre' :  POST_data_types($key);
                 }
                 else {
-                    !is_string( $valeur ) ? $erreurs[$explode_post[0]]['vous'][$explode_post[1]] = false : $formulaire[$explode_post[0]]['vous'][$explode_post[1]] = $valeur;    
+                    return !is_string( POST_data_types($key) ) ?  false :  POST_data_types($key);    
                 }
             }
-        }
-        else {
-            $erreurs[$explode_post[0]]['vous'][$explode_post[1]] = false;
-        }
+
+            var_dump( $formulaire, $erreur);
+        
+            
+        
     }
 
     //fonction testant la partie état civil du conjoint du formulaire.
@@ -72,10 +76,10 @@
     function test_etat_civil_conjoint($key, $value, $explode_post) {
         
         if( $explode_post[2] == 'email' ){
-            $formulaire[$explode_post[0]][$explode_post[1]][$explode_post[2]] = POST_email_type($key);
+            return POST_email_type($key);
         }
         elseif ( $explode_post[2] == 'date_naissance' && POST_date($key) ) {
-            $formulaire[$explode_post[0]][$explode_post[1]][$explode_post[2]] = $_POST[$key];
+            return $_POST[$key];
         }
         else {
             $valeur = POST_data_types($key);
@@ -83,10 +87,10 @@
             $int = array('age', 'code_postal', 'telephone', 'gsm', 'revenus');
             
             if ( in_array( $explode_post[2], $int) ) {
-                !is_int( $valeur ) ? $erreurs[$explode_post[0]][$explode_post[1]][$explode_post[2]] = 'Ce champs doit être un nombre' : $formulaire[$explode_post[0]][$explode_post[1]][$explode_post[2]] = $valeur;
+                return !is_int( $valeur) ? $valeur['erreur'] = 'Ce champs doit être un nombre' :  $valeur;
             }
             else {
-                !is_string( $valeur ) ? $erreurs[$explode_post[0]][$explode_post[1]][$explode_post[2]] = 'Ce champs doit être une chaine de caractère' : $formulaire[$explode_post[0]][$explode_post[1]][$explode_post[2]] = $valeur;  
+                !is_string( $valeur ) ? $valeur['erreur'] = 'Ce champs doit être une chaine de caractère' :  $valeur;  
             }
         }
         
@@ -98,13 +102,15 @@
 
     function test_etat_civil_enfant($key, $value, $explode_post) {
         
+        if(  POST_exist($key) != '' ) {
+            if ( $explode_post[3] == 'date_naissance' && POST_date($key) ) {
+                return POST_date($key);
+            }
+            else {            
+                return !is_string( POST_data_types($key) ) ? $valeur['erreur'] = 'Ce champs doit être une chaine de caractère' :  POST_data_types($key);  
+            }
+        }
         
-        if ( $explode_post[3] == 'date_naissance' && POST_date($key) ) {
-            $formulaire[$explode_post[0]][$explode_post[1]][$explode_post[2]][$explode_post[3]] = $_POST[$key];
-        }
-        else {            
-            !is_string( POST_data_types($key) ) ? $erreurs[$explode_post[0]][$explode_post[1]][$explode_post[2]][$explode_post[3]] = 'Ce champs doit être une chaine de caractère' : $formulaire[$explode_post[0]][$explode_post[1]][$explode_post[2]][$explode_post[3]] = POST_data_types($key);  
-        }
             
     }
 
@@ -129,7 +135,7 @@
             }
             elseif( $explode_post[2] == 'type_credit') {
                 $select = array( 'pret-personnel', 'pret-immobilier', 'pret-travaux' );
-                if( !in_array( POST_data_types($key), $checkbox ) ) {
+                if( !in_array( $explode_post[2], $select ) ) {
                     $erreurs[$explode_post[0]][$explode_post[1]][$explode_post[2]] = 'valeur invalide';  
                 }
                 elseif ( !is_string( POST_data_types($key)) ) {
@@ -153,17 +159,17 @@
 
     //fonction testant la partie fiscalité de la personne remplissant le formulaire.
 
-    function fiscalite_vous($key, $value, $explode_post) {
+    function test_fiscalite_vous($key, $value, $explode_post) {
 
         if( POST_exist($key) ) {
 
             if( $explode_post[1] == 'montant_impots') {
                 $valeur = POST_data_types($key);
                 if( is_int($valeur) || is_float($valeur) ) {
-                    $formulaire[$explode_post[0]]['vous'][$explode_post[1]] = $valeur;
+                    return $valeur;
                 } 
                 else {
-                    $erreurs[$explode_post[0]]['vous'][$explode_post[1]] = 'doit être un chiffre';  
+                    return $valeur['erreur'] = 'doit être un chiffre';  
                 }          
             }
             else {
@@ -171,18 +177,18 @@
                 $checkbox = array( 'EL', 'fA110', 'fA111', '111B', 'SRD' );
                 if ( $explode_post[1] == 'declaration' && $value == 'oui' ) {
                     if( !in_array( $value, $checkbox ) ) {
-                        $erreurs[$explode_post[0]]['vous'][$explode_post[1]] = 'valeur invalide';  
+                        return $valeur['erreur'] = 'valeur invalide';  
                     }
                     else {
-                        $formulaire[$explode_post[0]]['vous'][$explode_post[1]] = $valeur;   
+                        return $valeur;   
                     }
                 }
                 elseif ( $explode_post[1] == 'declaration' && $value == 'non' ) {
                     if( !in_array( $value, array( 'oui', 'non') ) ) {
-                        $erreurs[$explode_post[0]]['vous'][$explode_post[1]] = 'valeur invalide';  
+                       return $valeur['erreur'] = 'valeur invalide';  
                     }
                     else {
-                        $formulaire[$explode_post[0]]['vous'][$explode_post[1]] = $valeur;   
+                        return $valeur;   
                     }    
                 }
             }        
@@ -196,14 +202,14 @@
     }
     //fonction testant la partie fiscalité du conjoint du formulaire.
 
-    function fiscalite_conjoint($key, $value, $explode_post) {
+    function test_fiscalite_conjoint($key, $value, $explode_post) {
         if( $explode_post[2] == 'montant_impots') {
             $valeur = POST_data_types($key);
             if( is_int( POST_data_types($key) ) || is_float( POST_data_types($key) ) ) {
-                $formulaire[$explode_post[0]][$explode_post[1]][$explode_post[2]] = POST_data_types($key);
+                return POST_data_types($key);
             } 
             else {
-                $erreurs[$explode_post[0]][$explode_post[1]][$explode_post[2]] = 'Ce champs doit être un chiffre';  
+                return $valeur['erreur'] = 'Ce champs doit être un chiffre';  
             }          
         }
         else {
@@ -211,19 +217,19 @@
             $checkbox = array( 'EL', 'fA110', 'fA111', '111B', 'SRD' );
             if ( $explode_post[2] == 'declaration' && $value == 'oui' ) {
                 if( !in_array( POST_data_types($key), $checkbox ) ) {
-                    $erreurs[$explode_post[0]][$explode_post[1]][$explode_post[2]] = 'valeur invalide';  
+                    return $valeur['erreur'] = 'valeur invalide';  
                 }
                 else {
-                    $formulaire[$explode_post[0]][$explode_post[1]][$explode_post[2]] = POST_data_types($key);   
+                    return POST_data_types($key);   
                 }
             }
             //si la case 
             elseif ( $explode_post[2] == 'declaration' && $value == 'non' ) {
                 if( !in_array( POST_data_types($key), array( 'oui', 'non') ) ) {
-                    $erreurs[$explode_post[0]][$explode_post[1]][$explode_post[2]] = 'valeur invalide';  
+                    return $valeur['erreur'] = 'valeur invalide';  
                 }
                 else {
-                    $formulaire[$explode_post[0]][$explode_post[1]][$explode_post[2]] = POST_data_types($key);   
+                    return POST_data_types($key);   
                 }    
             }
         }        

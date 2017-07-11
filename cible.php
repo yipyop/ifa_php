@@ -149,6 +149,7 @@
                             $formulaire[$post[0]][$post[1]][$post[2]] = $POST_data_types($key);   
                         }
                     }
+                    //si la case 
                     elseif ( $post[2] == 'declaration' && $value == 'non' ) {
                         if( !in_array( POST_data_types($key), array( 'oui', 'non') ) ) {
                             $erreurs[$post[0]][$post[1]][$post[2]] = 'valeur invalide';  
@@ -159,9 +160,6 @@
                     }
                 }        
                
-
-
-                
             }
             else {
 
@@ -214,26 +212,30 @@
 
     
 
-        if( count($formulaire['etat_civil']['vous'] ) != 15 ) $erreurs['etat_civil']['vous']['nombre_champs'] = 'Il manque un champs';
-        if( isset($formulaire['etat_civil']['conjoint']) && count($formulaire['etat_civil']['conjoint'] ) != 15 ) $erreurs['etat_civil']['conjoint']['nombre_champs'] = 'Il manque un champs';
+        if( count($formulaire['etat_civil']['vous'] ) != 15 ) $erreurs['etat_civil']['vous']['general'] = 'Il manque un champs';
+        if( isset($formulaire['etat_civil']['conjoint']) && count($formulaire['etat_civil']['conjoint'] ) != 15 ) $erreurs['etat_civil']['conjoint']['general'] = 'Il manque un champs';
         
         $array_client_luxembourg = false;
         $array_client_france = false;
 
-        
-        if( $formulaire['etat_civil']['vous']['nationalite'] == 'france' )  {
+        if( empty( $erreurs) ) {
+            if( $formulaire['etat_civil']['vous']['nationalite'] == 'france' )  {
             $array_client_luxembourg = $formulaire;
+            }
+            elseif( $formulaire['etat_civil']['vous']['nationalite'] == 'luxembourg' ) {
+                $array_client_france = $formulaire;
+            }
+            var_dump( $array_client_france, $array_client_luxembourg );
         }
-        elseif( $formulaire['etat_civil']['vous']['nationalite'] == 'luxembourg' ) {
-            $array_client_france = $formulaire;
+        else {
+            var_dump( $formulaire, $erreurs );
         }
-
 
         
-        $erreurs['etat_civil']['vous']['nombre_champs'] = 'Il manque un champs';
+        
         
 
-        var_dump( $formulaire, $erreurs );
-        var_dump( $array_client_france, $array_client_luxembourg );
+        
+        
     }
 ?>

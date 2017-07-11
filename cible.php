@@ -2,19 +2,11 @@
     
     require 'fonctions.php';
     var_dump( $_POST );
-    //var_dump( $_SERVER );
-
-    // if( isset($_POST['truc-muche-youpi'])  ) {
-    //     $post = explode('-', 'truc-muche-youpi' );
-    //     var_dump( $post ) ; exit;  
-         
-    // }
-
-    
+        
 
     if( !empty($_POST) ) {
         $formulaire = array();
-        $erreurs = array();
+        $erreurs = false;
     }
 
     if( !empty( $_POST ) ) foreach ( $_POST as $key => $value ) {
@@ -65,7 +57,6 @@
                     
             }
 
-            
         }
         elseif( $post[0] == 'credit' ) {
             $valeur = test_credit($key, $value, $post);  
@@ -74,7 +65,7 @@
                 $erreurs[$post[0]][$post[1]][$post[2]] = $valeur['erreur'];
             }
             elseif( !is_null($valeur)) {
-                 $formulaire[$post[0]][$post[1]][$post[2]] = $valeur;
+                $formulaire[$post[0]][$post[1]][$post[2]] = $valeur;
             }
             
         }
@@ -111,29 +102,16 @@
     }
 
     if( !empty($_POST) ) {
-
-    
-
-        //if( count($formulaire['etat_civil']['vous'] ) != 15 ) $erreurs['etat_civil']['vous']['general'] = 'Il manque un champs';
-        //if( isset($formulaire['etat_civil']['conjoint']) && count($formulaire['etat_civil']['conjoint'] ) != 15 ) $erreurs['etat_civil']['conjoint']['general'] = 'Il manque un champs';
         
         $array_client_luxembourg = false;
         $array_client_france = false;
 
-        if( empty( $erreurs) ) {
-            if( $formulaire['etat_civil']['vous']['nationalite'] == 'france' )  {
+        if( $formulaire['etat_civil']['vous']['nationalite'] == 'france' )  {
             $array_client_luxembourg = $formulaire;
-            }
-            elseif( $formulaire['etat_civil']['vous']['nationalite'] == 'luxembourg' ) {
-                $array_client_france = $formulaire;
-            }
-            var_dump( $array_client_france, $array_client_luxembourg );
         }
-        else {
-            var_dump( $formulaire, $erreurs );
+        elseif( $formulaire['etat_civil']['vous']['nationalite'] == 'luxembourg' ) {
+            $array_client_france = $formulaire;
         }
-
-        
-        
+         
     }
 ?>

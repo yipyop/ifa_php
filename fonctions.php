@@ -61,7 +61,7 @@
                     return !is_int( POST_data_types($key) ) ?  'ce champs doit être un nombre' :  POST_data_types($key);
                 }
                 else {
-                    return !is_string( POST_data_types($key) ) ?  false :  POST_data_types($key);    
+                    return !is_string( POST_data_types($key) ) ?  $valeur['erreur'] = 'Ce champs doit être une chaîne de caractère' :  POST_data_types($key);    
                 }
             }
 

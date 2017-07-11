@@ -36,6 +36,30 @@
 
 			<?php include 'formulaire.html'; ?>
 
+			<?php 
+			if( $array_client_france) {
+				echo ' Nom : ' . $array_client_france['etat_civil']['vous']['nom'] . ' Prénom : ' . $array_client_france['etat_civil']['vous']['prenom'] . '<br/>' ;
+				echo ' Nationalité : ' . $array_client_france['etat_civil']['vous']['nationalité'] . '<br/>' ;
+				echo '<pre>' . print_r($array_client_france) . '</pre>' ;
+				if( $erreurs ) {
+					echo 'Erreurs : <br/>' ;
+					echo '<pre>' . print_r($erreurs) . '</pre>' ;
+				}
+			} 
+			?>
+
+			<?php 
+			if( $array_client_luxembourg) {
+				echo ' Nom : ' . $array_client_luxembourg['etat_civil']['vous']['nom'] . ' Prénom : ' . $array_client_luxembourg['etat_civil']['vous']['prenom'] . '<br/>' ;
+				echo ' Nationalité : ' . $array_client_luxembourg['etat_civil']['vous']['nationalité'] . '<br/>' ;
+				echo '<pre>' . print_r($array_client_luxembourg) . '</pre>' ;
+				if( $erreurs ) {
+					echo 'Erreurs : <br/>' ;
+					echo '<pre>' . print_r($erreurs) . '</pre>' ;
+				}
+			}
+			?>
+
 		</div><!-- /.container -->
 
 		

@@ -1,4 +1,5 @@
 <?php
+    // Christophe -Johan - Isabelle - Pascal
 
     //fonction de test de l'existance des variables
     function POST_exist( $post_key ) {

@@ -1,4 +1,7 @@
+<?php // Christophe -Johan - Isabelle - Pascal ?>
+
 <?php require 'cible.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">

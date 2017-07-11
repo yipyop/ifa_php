@@ -1,12 +1,9 @@
 <?php
     
     require 'fonctions.php';
-    var_dump( $_POST );
-        
-
     
-        $formulaire = false;
-        $erreurs = false;
+    $formulaire = false;
+    $erreurs = false;
     
 
     if( !empty( $_POST ) ) foreach ( $_POST as $key => $value ) {
@@ -46,8 +43,6 @@
             }    
             else {
                 $valeur = test_etat_civil_vous($key, $value, $post);
-
-                var_dump($valeur);
 
                 if( substr( $valeur, 0, 6) == 'erreur' ) {
                     $erreurs[$post[0]]['vous'][$post[1]] = $valeur;

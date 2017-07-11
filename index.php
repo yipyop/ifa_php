@@ -52,7 +52,7 @@
 					
 				}
 				if( $erreurs ) {
-					echo 'Erreurs : <br/>' ;
+					echo '<h2>Erreurs : </h2><br/>' ;
 					echo '<pre>' . var_dump($erreurs) . '</pre>' ;
 				}
 			}

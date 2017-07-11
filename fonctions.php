@@ -1,10 +1,11 @@
 <?php
 
-
+    //fonction de test de l'existance des variables
     function POST_exist( $post_key ) {
         return isset( $_POST[$post_key] ) ? $_POST[$post_key] : false;
     }
 
+    //fonction de test du datatype
     function POST_data_types( $post_key ) {
         
         if( is_numeric( $_POST[$post_key] ) ) {
@@ -23,7 +24,7 @@
             return false;
         }
     }
-
+    //fonction de test de l'adresse email
     function POST_email_type( $post_key ) {
         if (filter_var($_POST[$post_key], FILTER_VALIDATE_EMAIL)) {
             return $_POST[$post_key];
@@ -33,6 +34,7 @@
         }
     }
 
+    //fonction de test de la date
     function POST_date( $post_key, $format = 'Y-m-d') {
 
         $d = DateTime::createFromFormat($format, $_POST[$post_key]);
@@ -76,7 +78,7 @@
 
     function test_etat_civil_conjoint($key, $value, $explode_post) {
         
-        if( $explode_post[2] == 'email' ){
+        if( POST_exist($key) && $explode_post[2] == 'email' ){
             if( !POST_email_type($key) ) {
                 return 'erreur : email invalide';                
             } 
@@ -84,10 +86,10 @@
                 return POST_email_type($key);  
             }
         }
-        if ( $explode_post[2] == 'date_naissance' && POST_date($key) ) {
+        if ( POST_exist($key) && $explode_post[2] == 'date_naissance' && POST_date($key) ) {
             return $_POST[$key];
         }
-        elseif ( $explode_post[2] == 'date_naissance' && !POST_date($key) ) {
+        elseif (POST_exist($key) &&  $explode_post[2] == 'date_naissance' && !POST_date($key) ) {
             return 'erreur : date_naissance invalide';
         }
         else{

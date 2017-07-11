@@ -37,11 +37,11 @@ select {
     width: 85%;
 }
 
-.fiscalite {
+/*.fiscalite {
     /*display: inline-block;*/
-    width: 100%; 
+    /*width: 100%; 
     margin: auto;
-}
+}*/
 
 .fiscalite-vous {
     width: 49%; 

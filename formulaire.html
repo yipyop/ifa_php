@@ -233,97 +233,96 @@
 
 		<hr>
 		
-		<div class="fiscalite">
-
-			<div class="fiscalite-vous">
-
-				<h2>Vous</h2>
-
-				<h3>Montant des impôts payés</h3>
-
-				<div class="form-group">
-					<label for="fiscalite-input">Montant de vos impôts en euros :</label><br/>
-					<input class="fiscalite-input" type="text" name="fiscalite-montant_impots" placeholder="Veuillez saisir le montant de vos impôts" /><br/>	
-				</div>
-				<div>
-
-					
-
-					<h3>Faites-vous votre déclaration d'impôts ?</h3><br>
-
-					<div class="fiscalite-declaration-left">
-
-						<input type="radio" name="fiscalite-declaration" value="ouijedeclare" id="ouijedeclare" /> <label for="ouijedeclare">Si oui</label><br/>
-						
-						<h4>Déduisez-vous :</h4>
-
-						<input type="checkbox" name="fiscalite-EL" id="EL" /> <label for="EL">EL</label><br />
-						<input type="checkbox" name="A110" id="fiscalite-A110" /> <label for="fA110">A110</label><br>
-						<input type="checkbox" name="A111" id="fiscalite-A111" /> <label for="fA111">A111</label><br>
-						<input type="checkbox" name="111B" id="fiscalite-111B" /> <label for="111B">111B</label><br>                          
-						<input type="checkbox" name="SRD" id="SRD" /> <label for="SRD">SRD</label><br><br>
-
-					</div>
-
-					<div class="fiscalite-declaration-right">
-
-						<input type="radio" name="fiscalite-declaration" value="nonjedeclare" id="nonjedeclare" /> <label for="nonjedeclare">Si non</label><br />
-
-						<h4>Etes-vous intéressé pour le faire ?</h4>
-
-						<input type="radio" name="fiscalite-interet_declaration" value="ouiinteresse" id="ouiinteresse" /> <label for="ouiinteresse">Oui</label><br>
-						<input type="radio" name="fiscalite-interet_declaration" value="noninteresse" id="noninteresse" /> <label for="noninteresse">non</label><br>
-
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="fiscalite-conjoint">
-				<h2>Votre conjoint</h2>
-
-				<h3>Montant des impôts payés</h3>
-
-				<div class="form-group">
-					<label for="fiscalite-input">Montant de vos impôts en euros :</label><br/>
-					<input class="fiscalite-input" type="text" name="fiscalite-conjoint-montant_impots" placeholder="Veuillez saisir le montant de vos impôts" /><br/>
-				</div>
-
-				<div>
-					<h3>Faites-vous votre déclaration d'impôts ?</h3><br>
-
-					<div class="fiscalite-declaration-left">
-
-						<input type="radio" name="fiscalite-conjoint-declaration" value="ouijedeclare" id="ouijedeclare" /> <label for="ouijedeclare">Si oui</label><br/>
-
-						<h4>Déduisez-vous :</h4>
-
-						<input type="checkbox" name="fiscalite-conjoint-EL" id="EL" /> <label for="EL">EL</label><br />
-						<input type="checkbox" name="fiscalite-conjoint-A110" id="A110" /> <label for="fA110">A110</label><br>
-						<input type="checkbox" name="fiscalite-conjoint-A111" id="A111" /> <label for="fA111">A111</label><br>
-						<input type="checkbox" name="fiscalite-conjoint-111B" id="111B" /> <label for="111B">111B</label><br>                          
-						<input type="checkbox" name="fiscalite-conjoint-SRD" id="SRD" /> <label for="SRD">SRD</label><br><br>
-
-					</div>
-
-					<div class="fiscalite-declaration-right">
-
-						<input type="radio" name="fiscalite-conjoint-declaration" value="nonjedeclare" id="nonjedeclare" /> <label for="nonjedeclare">Si non</label><br />
-
-						<h4>Etes-vous intéressé pour le faire ?</h4>
-
-						<input type="radio" name="fiscalite-conjoint-interet_declaration" value="ouiinteresse" id="ouiinteresse" /> <label for="ouiinteresse">Oui</label><br>
-						<input type="radio" name="fiscalite-conjoint-interet_declaration" value="noninteresse" id="noninteresse" /> <label for="noninteresse">non</label><br>
-
-					</div>
-
-				</div>
-
-			</div>
 		
+
+		<div class="fiscalite-vous">
+
+			<h3>Vous</h3>
+
+			<h4>Montant des impôts payés</h4>
+
+			<div class="form-group">
+				<label for="fiscalite-input">Montant de vos impôts en euros :</label><br/>
+				<input class="fiscalite-input" type="text" name="fiscalite-montant_impots" placeholder="Veuillez saisir le montant de vos impôts" /><br/>	
+			</div>
+
+			<hr>
+
+			<div>
+				<h4>Faites-vous votre déclaration d'impôts ?</h4>
+
+				<div class="fiscalite-declaration-left">
+
+					<input type="radio" name="fiscalite-declaration" value="oui" id="ouijedeclare" /> <label for="ouijedeclare">Si oui</label><br/>
+					
+					<h5>Déduisez-vous :</h5>
+
+					<input type="checkbox" name="fiscalite-EL" id="EL" /> <label for="EL">EL</label><br />
+					<input type="checkbox" name="A110" id="fiscalite-A110" /> <label for="fA110">A110</label><br>
+					<input type="checkbox" name="A111" id="fiscalite-A111" /> <label for="fA111">A111</label><br>
+					<input type="checkbox" name="111B" id="fiscalite-111B" /> <label for="111B">111B</label><br>                          
+					<input type="checkbox" name="SRD" id="SRD" /> <label for="SRD">SRD</label><br><br>
+
+				</div>
+
+				<div class="fiscalite-declaration-right">
+
+					<input type="radio" name="fiscalite-declaration" value="non" id="nonjedeclare" /> <label for="nonjedeclare">Si non</label><br />
+
+					<h5>Etes-vous intéressé pour le faire ?</h5>
+
+					<input type="radio" name="fiscalite-interet_declaration" value="oui" id="ouiinteresse" /> <label for="ouiinteresse">Oui</label><br>
+					<input type="radio" name="fiscalite-interet_declaration" value="non" id="noninteresse" /> <label for="noninteresse">non</label><br>
+
+				</div>
+
+			</div>
+
 		</div>
 
+		<div class="fiscalite-conjoint">
+			<h3>Votre conjoint</h3>
+
+			<h4>Montant des impôts payés</h4>
+
+			<div class="form-group">
+				<label for="fiscalite-input">Montant de vos impôts en euros :</label><br/>
+				<input class="fiscalite-input" type="text" name="fiscalite-conjoint-montant_impots" placeholder="Veuillez saisir le montant de vos impôts" /><br/>
+			</div>
+
+			<hr>
+
+			<div>
+				<h4>Faites-vous votre déclaration d'impôts ?</h4>
+
+				<div class="fiscalite-declaration-left">
+
+					<input type="radio" name="fiscalite-conjoint-declaration" value="oui" id="ouijedeclare" /> <label for="ouijedeclare">Si oui</label><br/>
+
+					<h4>Déduisez-vous :</h4>
+
+					<input type="checkbox" name="fiscalite-conjoint-EL" id="EL" /> <label for="EL">EL</label><br />
+					<input type="checkbox" name="fiscalite-conjoint-A110" id="A110" /> <label for="fA110">A110</label><br>
+					<input type="checkbox" name="fiscalite-conjoint-A111" id="A111" /> <label for="fA111">A111</label><br>
+					<input type="checkbox" name="fiscalite-conjoint-111B" id="111B" /> <label for="111B">111B</label><br>                          
+					<input type="checkbox" name="fiscalite-conjoint-SRD" id="SRD" /> <label for="SRD">SRD</label><br><br>
+
+				</div>
+
+				<div class="fiscalite-declaration-right">
+
+					<input type="radio" name="fiscalite-conjoint-declaration" value="non" id="nonjedeclare" /> <label for="nonjedeclare">Si non</label><br />
+
+					<h4>Etes-vous intéressé pour le faire ?</h4>
+
+					<input type="radio" name="fiscalite-conjoint-interet_declaration" value="ouiinteresse" id="ouiinteresse" /> <label for="ouiinteresse">Oui</label><br>
+					<input type="radio" name="fiscalite-conjoint-interet_declaration" value="noninteresse" id="noninteresse" /> <label for="noninteresse">non</label><br>
+
+				</div>
+
+			</div>
+
+		</div>
 		
 		
 		<hr>
@@ -337,6 +336,8 @@
 		<hr>
 		
 		<h4>Crédit 1</h4>
+
+
 
 		<div class="form-group">
 			<label for="coordonnes">Nature de l'emprunt :</label>
@@ -366,6 +367,8 @@
 		<div class="form-group">
 			<label for="coordonnes">Capital emprunté</label><input type="text" name="credit-1-capital_emprunte"/>
 		</div>
+
+		<hr>
 
 		<h4>Crédit 2</h4>
 
@@ -398,6 +401,8 @@
 			<label for="coordonnes">Capital emprunté</label><input type="text" name="credit-2-capital_emprunte"/>
 		</div>
 
+		<hr>
+
 		<h4>Crédit 3</h4>
 
 		<div class="form-group">
@@ -429,6 +434,8 @@
 			<label for="coordonnes">Capital emprunté</label><input type="text" name="credit-3-capital_emprunte"/>
 		</div>
 
+		<hr>
+
 		<h4>Crédit 4</h4>
 
 		<div class="form-group">
@@ -459,6 +466,8 @@
 		<div class="form-group">
 			<label for="coordonnes">Capital emprunté</label><input type="text" name="credit-4-capital_emprunte"/>
 		</div>
+
+		<hr>
 
 		<h4>Crédit 5</h4>
 

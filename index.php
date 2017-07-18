@@ -48,7 +48,7 @@
 					
 				} 
 				
-				if( $array_client_luxembourg && isset($array_client_luxembourg['etat_civil']['vous']['nom']) && iset($array_client_luxembourg['etat_civil']['vous']['prenom'])) {
+				if( $array_client_luxembourg && isset($array_client_luxembourg['etat_civil']['vous']['nom']) && isset($array_client_luxembourg['etat_civil']['vous']['prenom'])) {
 					echo ' Nom : ' . $array_client_luxembourg['etat_civil']['vous']['nom'] . ' Prénom : ' . $array_client_luxembourg['etat_civil']['vous']['prenom'] . '<br/>' ;
 					echo ' Nationalité : ' . $array_client_luxembourg['etat_civil']['vous']['nationalite'] . '<br/>' ;
 					echo '<pre>' . var_dump($array_client_luxembourg) . '</pre>' ;
